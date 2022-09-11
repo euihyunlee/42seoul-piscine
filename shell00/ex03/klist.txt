@@ -1,0 +1,5 @@
+Credentials cache: API:AD084858-7D7F-4416-96FD-05AC2D9CF73E
+        Principal: euihlee@42SEOUL.KR
+
+  Issued                Expires               Principal
+Aug 22 15:05:11 2022  Aug 23 01:05:07 2022  krbtgt/42SEOUL.KR@42SEOUL.KR
