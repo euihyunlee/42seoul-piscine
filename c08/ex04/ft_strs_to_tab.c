@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 19:54:37 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/12 13:53:09 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/12 15:01:06 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 	{
 		arr[i].size = ft_strlen(av[i]);
 		arr[i].str = av[i];
-		arr[i].copy = malloc(sizeof av[i]);
+		arr[i].copy = malloc(arr[i].size + 1);
 		if (arr[i].copy == NULL)
 			return (NULL);
 		ft_strcpy(arr[i].copy, av[i]);
