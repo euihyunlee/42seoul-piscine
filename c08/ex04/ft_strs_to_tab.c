@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 19:54:37 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/11 20:11:55 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/12 13:53:09 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		ft_strlen(char *str);
 void	ft_strcpy(char *dest, char *src);
 
-struct	s_stock_str *ft_strs_to_tab(int ac, char **av)
+struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
 	t_stock_str	*arr;
 	int			i;
