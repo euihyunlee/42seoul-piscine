@@ -6,28 +6,23 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 20:25:22 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/13 15:09:02 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/13 20:59:27 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_stock_str.h"
+#include <unistd.h>
 
 int		ft_strlen2(char *str);
-char	*ft_itoa(int nbr);
+void	ft_putnbr(int nb);
 
 void	ft_show_tab(struct s_stock_str *par)
 {
-	char	*size;
-
 	while (par->str != 0)
 	{
 		write(1, par->str, par->size);
 		write(1, "\n", 1);
-		size = ft_itoa(par->size);
-		if (size == NULL)
-			return ;
-		write(1, size, ft_strlen2(size));
-		free(size);
+		ft_putnbr(par->size);
 		write(1, "\n", 1);
 		write(1, par->copy, ft_strlen2(par->copy));
 		write(1, "\n", 1);
@@ -45,23 +40,18 @@ int	ft_strlen2(char *str)
 	return (len);
 }
 
-char	*ft_itoa(int nbr)
+void	ft_putnbr(int nb)
 {
-	static char	*to;
-	static char	*tmp;
-	static int	len;
+	char	digit;
 
-	len++;
-	if (nbr < 10)
+	if (nb < 10)
 	{
-		to = malloc(len + 1);
-		if (to == NULL)
-			return (NULL);
-		tmp = to;
-		tmp[len] = '\0';
-		*tmp++ = '0' + nbr;
+		digit = nb + '0';
+		write(1, &digit, 1);
+		return ;
 	}
-	else if (ft_itoa(nbr / 10))
-		*tmp++ = '0' + (nbr % 10);
-	return (to);
+	ft_putnbr(nb / 10);
+	digit = nb % 10 + '0';
+	write (1, &digit, 1);
+	return ;
 }
