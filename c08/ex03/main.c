@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 00:56:24 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/12 00:56:27 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/13 10:29:25 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	set_point(t_point *point)
 int	main(void)
 {
 	t_point	point;
+
 	set_point(&point);
 	return (0);
 }
