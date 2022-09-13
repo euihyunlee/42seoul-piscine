@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tab.h                                           :+:      :+:    :+:   */
+/*   ft_stock_str.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 13:30:36 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/12 13:45:09 by euihlee          ###   ########.fr       */
+/*   Created: 2022/09/13 15:09:28 by euihlee           #+#    #+#             */
+/*   Updated: 2022/09/13 15:10:02 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_TAB_H
-# define FT_TAB_H
+#ifndef FT_STOCK_STR_H
+# define FT_STOCK_STR_H
 # include <stdlib.h>
 # include <unistd.h>
 

@@ -6,11 +6,11 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 20:25:22 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/12 13:48:13 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/13 15:09:02 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_tab.h"
+#include "ft_stock_str.h"
 
 int		ft_strlen2(char *str);
 char	*ft_itoa(int nbr);
