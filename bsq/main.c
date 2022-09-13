@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:05:42 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/14 05:15:05 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/14 06:25:41 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,18 @@
 int	main(int argc, char **argv)
 {
 	char	*file;
+	int		i;
 	t_map	map;
 	t_max	max;
 
-	i = -1;
+	i = 0;
+	if (argc == 1)
+	{
+		file = NULL;
+		i--;
+	}
 	while (++i < argc)
 	{
-		file == NULL;
 		if (argc > 1)
 			file = argv[i];
 		if (!survey(file, &map))
@@ -32,4 +37,5 @@ int	main(int argc, char **argv)
 		// TODO: Valid map
 		find_square(map, &max);
 	}
+	return (0);
 }

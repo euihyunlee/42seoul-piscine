@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:16:03 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/14 05:07:39 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/14 07:07:15 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,10 @@ typedef struct s_max
 	int	i;
 	int	j;
 }	t_max;
+
+void	find_square(t_map map, t_max *max);
+int	**get_buf(t_map map, int *arr);
+int	get_min(int i, int j, int k);
+void	get_max(int **buf, int i, t_max *max);
 
 #endif

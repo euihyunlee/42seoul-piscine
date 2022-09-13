@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 22:20:15 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/14 03:33:22 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/14 06:44:29 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	make_map(t_fd fd, t_map *map)
 		exit(EXIT_FAILURE);
 	i = -1;
 	while (++i < map->y)
-		*map++ = make_row(fd, map)
+	{
+		// TODO: make_row
+		map[i] = make_row(fd, map);
+	}
 	if (read(fd, nl, 1) != 0)
 	{
 		burn(map);
@@ -29,7 +32,7 @@ int	make_map(t_fd fd, t_map *map)
 	return (TRUE);
 }
 
-int	make_row(t_fd fd, t_map *map)
+int	*make_row(t_fd fd, t_map *map)
 {
 	int	*row;
 
@@ -46,7 +49,7 @@ int	make_row(t_fd fd, t_map *map)
 		|| read(fd.z, &nl, 1) != 1 || nl != '\n')
 	{
 		burn(map);
-		return (FALSE);
+		return (NULL);
 	}
 	*map++ = row;
 }
@@ -59,6 +62,7 @@ void	burn(t_map *map);
 	}
 }
 
+/*
 int	check_x(t_fd fd, t_map map)
 {
 	int		x;
@@ -75,3 +79,4 @@ int	check_x(t_fd fd, t_map map)
 		return (0);
 	return (1);
 }
+*/

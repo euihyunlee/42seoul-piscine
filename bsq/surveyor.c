@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 22:19:51 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/14 02:53:41 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/14 06:39:15 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	survey(char *file, t_map *map)
 		close(fd.z);
 		return (FALSE);
 	}
-	return (make_map(file, fd, map));
+	return (make_map(fd, map));
 }
 
 int	get_fd(char *file, t_fd *fd)
@@ -89,7 +89,7 @@ int	get_y(int len, char *str)
 	return (y);
 }
 
-int	get_x()
+int	get_x(t_fd fd, tmap *map)
 {
 	int		x;
 	char	c;
