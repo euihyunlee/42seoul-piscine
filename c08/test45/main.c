@@ -6,11 +6,11 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 13:29:30 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/12 14:59:51 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/13 15:15:55 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_tab.h"
+#include "ft_stock_str.h"
 #include <stdio.h>
 
 int	main(int argc, char **argv)
