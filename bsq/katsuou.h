@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:16:03 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/12 22:11:41 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/14 05:07:39 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,28 @@
 # include <unistd.h>
 # define TRUE 1
 # define FALSE 0
-# define CHECK(a) (a) == 0 ? FALSE : TRUE
 
 typedef struct s_map
 {
-	char	**map;
-	int		scale;
+	int		**map;
+	int		x;
+	int		y;
 	char	emp;
 	char	obs;
 	char	ful;
 }	t_map;
+
+typedef struct s_fd
+{
+	int	a;
+	int	z;
+}	t_fd;
+
+typedef struct s_max
+{
+	int	val;
+	int	i;
+	int	j;
+}	t_max;
 
 #endif

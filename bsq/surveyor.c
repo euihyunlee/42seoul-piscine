@@ -6,100 +6,108 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 22:19:51 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/12 22:22:08 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/14 02:53:41 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	survey(char *file)
+int	survey(char *file, t_map *map)
 {
-	int		fd1;
-	int		fd2;
-	t_map	map;
+	t_fd	fd;
 
-	fd1 = open(file, O_RDONLY);
-	if (fd1 < 0)
-		exit(EXIT_FAILURE);
-	fd2 = open(file, O_RDONLY);
-	if (fd2 < 0)
+	if (!get_fd(file, &fd))
+		return (FALSE)
+	if(!read_header(fd, map) || map->y < 1 || map->x < 1)
 	{
-		close(fd1);
-		exit(EXIT_FAILURE);
-	}
-	map = read_header(fd1, fd2);
-	close(fd2);
-	if(map == NULL || map.scale < 1)
-	{
-		close(fd1);
+		close(fd.a);
+		close(fd.z);
 		return (FALSE);
 	}
-	map.map = make_map(fd1, map);
-	close(fd1);
-	return (CHECK(map));
+	return (make_map(file, fd, map));
 }
 
-t_map	*read_header(int fd1, int fd2)
+int	get_fd(char *file, t_fd *fd)
 {
-	t_map	*map;
-	char	c;
-	char	symb[3];
-	
-	map = malloc(sizeof (t_map));
-	if (map == NULL)
-		exit(EXIT_FAILURE);
-	map->scale = get_scale(fd1, fd2, &c);
-	if (map->scale < 0
-		|| read(fd1, symb, 3) != 3 || !is_printable(symb)
-		|| c != '\n')
+	if (file == NULL)
 	{
-		free(map);
-		return (NULL);
+		fd->a = 0;
+		fd->z = 0;
 	}
-	map->emp = arr[0];
-	map->obs = arr[1];
-	map->ful = arr[2];
-	read(fd2, symb, 3);
-	return (map);
-}
-
-int	get_scale(int fd1, int fd2, char *c)
-{
-	int		len;
-	char	*nbr;
-	int		scale;
-
-	len = 0;
-	while (read(fd1, c, 1) == 1)
+	else
 	{
-		if ('0' <= *c && *c <= '9')
-			len++;
-		else
-			break ;
-	}
-	nbr = malloc(len + 1);
-	if (nbr == NULL)
-		exit(EXIT_FAILURE);
-	nbr[len] = '\0';
-	read(fd2, nbr, len);
-	scale = ft_atoi(nbr);
-	free(nbr);
-	return (scale);
-}
-
-int	is_printable(char *arr)
-{
-	int	i;
-
-	i = -1;
-	while (++i < 3)
-	{
-		if (!(' ' <= arr[i] && arr[i] <= '~'))
+		fd->a = open(file, O_RDONLY);
+		if (fd->a < 0)
 			return (FALSE);
-		j = i;
-		while (--j <= 0)
+		fd->z = open(file, O_RDONLY);
+		if (fd->z < 0)
 		{
-			if (arr[i] = arr[j])
-				return (FALSE);
+			close(fd->a);
+			return (FALSE);
 		}
 	}
 	return (TRUE);
+}
+
+t_map	*read_header(t_fd fd, t_map *map)
+{
+	int		len;
+	char	c;
+	char	*buf;
+	
+	len = 0;
+	while (read(fd.a, &c, 1) == 1 && c != '\n')
+	{
+		if (!(' ' <= arr[i] && arr[i] <= '~'))
+			return (FALSE);
+		len++;
+	}
+	if (len < 4)
+		return (FALSE);
+	buf = malloc(len - 3);
+	if (buf == NULL)
+		exit(EXIT_FAILURE);
+	read(fd.z, buf, len - 3);
+	map->y = get_y(len - 3, buf);
+	free(buf);
+	map->x = get_x(fd, map);
+	return (TRUE);
+}
+
+// TODO: atoi invalid number
+int	get_y(int len, char *str)
+{
+	int	i;
+	int	y;
+
+	y = 0;
+	i = -1;
+	while (++i < len)
+	{
+		if (!('0' <= str[i] && str[i] <= '9'))
+			return (-1);
+		y = y * 10 + (str[i] - '0');
+	}
+	return (y);
+}
+
+int	get_x()
+{
+	int		x;
+	char	c;
+
+	read(fd.z, map->emp, 1);
+	read(fd.z, map->obs, 1);
+	read(fd.z, map->ful, 1);
+	if (map->emp == map->obs
+		|| map->obs == map->ful
+		|| map->ful == map->emp)
+		return (-1);
+	read(fd.z, &c, 1);
+	x = 0;
+	while (read(fd.a, &c, 1) == 1 && c != '\n')
+	{
+		if (!(c == map->emp || c == map->obs))
+			return (-1);
+		x++;
+	}
+	return (x);
 }
