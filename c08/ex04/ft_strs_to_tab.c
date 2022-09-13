@@ -6,11 +6,11 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 19:54:37 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/12 15:01:06 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/13 15:09:12 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "ft_stock_str.h"
 
 int		ft_strlen(char *str);
 void	ft_strcpy(char *dest, char *src);
