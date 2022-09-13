@@ -14,7 +14,7 @@ vpath %.c $(srcs_dir)
 all : $(NAME)
 
 $(NAME) : $(objects)
-	ar -rv $(NAME) $(objects)
+	ar -rv $@ $^
 
 $(objects) : ft.h
 
