@@ -6,13 +6,13 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 20:25:22 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/12 13:57:17 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/13 15:09:02 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_stock_str.h"
 
-int		ft_strlen(char *str);
+int		ft_strlen2(char *str);
 char	*ft_itoa(int nbr);
 
 void	ft_show_tab(struct s_stock_str *par)
@@ -26,16 +26,16 @@ void	ft_show_tab(struct s_stock_str *par)
 		size = ft_itoa(par->size);
 		if (size == NULL)
 			return ;
-		write(1, size, ft_strlen(size));
+		write(1, size, ft_strlen2(size));
 		free(size);
 		write(1, "\n", 1);
-		write(1, par->copy, ft_strlen(par->copy));
+		write(1, par->copy, ft_strlen2(par->copy));
 		write(1, "\n", 1);
 		par++;
 	}
 }
 
-int	ft_strlen(char *str)
+int	ft_strlen2(char *str)
 {
 	int	len;
 
