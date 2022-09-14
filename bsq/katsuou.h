@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:16:03 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/14 16:32:35 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/14 16:46:56 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <unistd.h>
 # define TRUE 1
 # define FALSE 0
+
+# include <stdio.h>
 
 typedef struct s_map
 {

@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 22:20:15 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/14 16:43:21 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/14 16:57:15 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*make_row(t_fd fd, t_map *map)
 		exit(EXIT_FAILURE);
 	}
 	if (read(fd.z, row, x) != x || !check_row(row, map)
-		|| row[x] != '\n')
+		|| row[map->x] != '\n')
 		return (NULL);
 	return (row);
 }
