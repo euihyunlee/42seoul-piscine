@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:16:03 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/15 08:00:01 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/15 08:20:35 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,20 @@ typedef struct s_max
 	int	j;
 }	t_max;
 
-int	survey(char *file, t_map *map);
-int	get_fd(char *file, t_fd *fd);
-int	read_header(t_fd fd, t_map *map);
-int	get_y(t_fd fd, int len);
-int	get_x(t_fd fd, t_map *map);
+int		survey(char *file, t_map *map);
+int		get_fd(char *file, t_fd *fd);
+int		read_header(t_fd fd, t_map *map);
+int		get_y(t_fd fd, int len);
+int		get_x(t_fd fd, t_map *map);
 
-int	make_map(t_fd fd, t_map *map);
+int		make_map(t_fd fd, t_map *map);
 char	*make_row(t_fd fd, t_map *map);
-int	check_row(char *row, t_map *map);
+int		check_row(char *row, t_map *map);
 void	burn(t_map *map);
 
 void	find_square(t_map *map, t_max *max);
-int	**get_buf(t_map *map, int *arr);
-int	get_min(int i, int j, int k);
+int		**get_buf(t_map *map, int *arr);
+int		get_min(int i, int j, int k);
 void	get_max(int **buf, int i, t_max *max, t_map *map);
 
 void	x_marks_the_spot(t_map map, t_max max);

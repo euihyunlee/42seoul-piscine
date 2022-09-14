@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 22:19:51 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/15 08:11:12 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/15 08:15:55 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	survey(char *file, t_map *map)
 
 	if (!get_fd(file, &fd))
 		return (FALSE);
-	if(!read_header(fd, map) || map->y < 1 || map->x < 1)
+	if (!read_header(fd, map) || map->y < 1 || map->x < 1)
 	{
 		close(fd.a);
 		close(fd.z);
@@ -57,7 +57,7 @@ int	read_header(t_fd fd, t_map *map)
 {
 	int		len;
 	char	c;
-	
+
 	len = 0;
 	while (read(fd.a, &c, 1) == 1 && c != '\n')
 	{
