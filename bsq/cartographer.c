@@ -6,25 +6,34 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 22:20:15 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/14 06:44:29 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/14 16:43:21 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "katsuou.h"
 
 int	make_map(t_fd fd, t_map *map)
 {
 	int		i;
 	char	nl;
 
-	map->map = malloc(sizeof (int *) * map->y);
+	map->map = malloc(sizeof (char *) * map->y);
 	if (map->map == NULL)
 		exit(EXIT_FAILURE);
 	i = -1;
 	while (++i < map->y)
+		map->map[i] = NULL;
+	i = -1;
+	while (++i < map->y)
 	{
-		// TODO: make_row
-		map[i] = make_row(fd, map);
+		map->map[i] = make_row(fd, map);
+		if (map->map[i] == NULL)
+		{
+			burn(map);
+			return (FALSE);
+		}
 	}
-	if (read(fd, nl, 1) != 0)
+	if (read(fd.z, &nl, 1) != 0)
 	{
 		burn(map);
 		return (FALSE);
@@ -32,51 +41,43 @@ int	make_map(t_fd fd, t_map *map)
 	return (TRUE);
 }
 
-int	*make_row(t_fd fd, t_map *map)
+char	*make_row(t_fd fd, t_map *map)
 {
-	int	*row;
+	char	*row;
+	int		x;
 
-	row = malloc(sizeof (int) * map->x);
+	x = map->x + 1;
+	row = malloc(x);
 	if (row == NULL)
 	{
-		// TODO: burn map
 		burn(map);
 		exit(EXIT_FAILURE);
 	}
-	// TODO: burn and return false if newline in row
-	// make read_row func to check valid row
-	if (read(fd.z, row, map->x) != map->x
-		|| read(fd.z, &nl, 1) != 1 || nl != '\n')
-	{
-		burn(map);
+	if (read(fd.z, row, x) != x || !check_row(row, map)
+		|| row[x] != '\n')
 		return (NULL);
-	}
-	*map++ = row;
+	return (row);
 }
 
-void	burn(t_map *map);
+int	check_row(char *row, t_map *map)
 {
-	while (map->map != NULL)
-	{
+	int	i;
 
+	i = -1;
+	while (++i < map->x)
+	{
+		if (!(row[i] == map->emp || row[i] == map->obs))
+			return (FALSE);
 	}
+	return (TRUE);
 }
 
-/*
-int	check_x(t_fd fd, t_map map)
+void	burn(t_map *map)
 {
-	int		x;
-	char	c;
-
-	x = 0;
-	while (read(fd.a, &c, 1) == 1 && c != '\n')
+	if (map->map == NULL)
 	{
-		if (!(c == map->emp || c == map->obs))
-			return (0);
-		x++;
+		while (*map->map)
+			free(*map->map++);
 	}
-	if (x != map->x)
-		return (0);
-	return (1);
+	return ;
 }
-*/

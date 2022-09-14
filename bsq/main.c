@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:05:42 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/14 06:25:41 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/14 16:33:12 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	char	*file;
 	int		i;
 	t_map	map;
-	t_max	max;
+	//t_max	max;
 
 	i = 0;
 	if (argc == 1)
@@ -34,8 +34,9 @@ int	main(int argc, char **argv)
 			write(1, "map error\n", 10);
 			continue ;
 		}
-		// TODO: Valid map
-		find_square(map, &max);
+		write(1, "good read\n", 10);
+		// TODO
+		// find_square(map, &max);
 	}
 	return (0);
 }
