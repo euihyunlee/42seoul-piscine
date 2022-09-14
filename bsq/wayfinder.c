@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 00:06:06 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/15 02:45:22 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/15 03:21:25 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,6 @@ void	find_square(t_map *map, t_max *max)
 		arr[i] = 0;
 	arr[(int) map->emp] = 1;
 	buf = get_buf(map, arr);
-	/*
-	for (int k = 0; k < map->x; k++)
-		printf("%d ", buf[0][k]);
-	printf("\n");
-	*/
 	i = 0;
 	while (++i < map->y)
 	{
@@ -44,11 +39,6 @@ void	find_square(t_map *map, t_max *max)
 			else
 				buf[row][j] = get_min(buf[!row][j - 1], buf[!row][j], buf[row][j - 1]);
 		}
-		/*
-		for (int k = 0; k < map->x; k++)
-			printf("%d ", buf[row][k]);
-		printf("\n");
-		*/
 		get_max(buf, i, max, map);
 	}
 	free(buf[0]);
