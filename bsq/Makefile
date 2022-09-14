@@ -22,4 +22,4 @@ fclean : clean
 
 .PHONY : clean
 clean :
-	rm -f $(objects)
+	rm -f $(objects) tmpfile

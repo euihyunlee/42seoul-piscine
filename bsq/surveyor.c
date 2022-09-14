@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 22:19:51 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/14 17:13:53 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/15 08:11:12 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,26 @@ int	survey(char *file, t_map *map)
 
 int	get_fd(char *file, t_fd *fd)
 {
+	char	c;
+
 	if (file == NULL)
 	{
-		fd->a = 0;
-		fd->z = 0;
-	}
-	else
-	{
-		fd->a = open(file, O_RDONLY);
+		fd->a = open("tmpfile", O_CREAT | O_RDWR | O_TRUNC);
 		if (fd->a < 0)
 			return (FALSE);
-		fd->z = open(file, O_RDONLY);
-		if (fd->z < 0)
-		{
-			close(fd->a);
-			return (FALSE);
-		}
+		while (read(0, &c, 1) == 1)
+			write(fd->a, &c, 1);
+		file = "tmpfile";
+		close(fd->a);
+	}
+	fd->a = open(file, O_RDONLY);
+	if (fd->a < 0)
+		return (FALSE);
+	fd->z = open(file, O_RDONLY);
+	if (fd->z < 0)
+	{
+		close(fd->a);
+		return (FALSE);
 	}
 	return (TRUE);
 }
