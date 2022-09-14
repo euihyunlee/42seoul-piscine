@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 22:20:15 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/14 16:57:15 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/15 01:27:56 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,17 @@ int	check_row(char *row, t_map *map)
 
 void	burn(t_map *map)
 {
+	int	i;
+
 	if (map->map == NULL)
+		return ;
+	i = -1;
+	while (++i < map->y)
 	{
-		while (*map->map)
-			free(*map->map++);
+		if (map->map[i] == NULL)
+			break ;
+		free(map->map[i]);
 	}
+	free(map->map);
 	return ;
 }

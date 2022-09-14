@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 00:06:06 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/14 22:56:22 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/15 02:45:22 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ void	find_square(t_map *map, t_max *max)
 		arr[i] = 0;
 	arr[(int) map->emp] = 1;
 	buf = get_buf(map, arr);
+	/*
+	for (int k = 0; k < map->x; k++)
+		printf("%d ", buf[0][k]);
+	printf("\n");
+	*/
 	i = 0;
 	while (++i < map->y)
 	{
@@ -36,18 +41,27 @@ void	find_square(t_map *map, t_max *max)
 				buf[row][j] = arr[(int) map->map[i][j]];
 			else if (map->map[i][j] == map->obs)
 				buf[row][j] = 0;
-			// TODO
 			else
-				buf[row][j] = get_min(buf[!row][j - 1], buf[!row][j], arr[(int) map->map[i][j - 1]]);
+				buf[row][j] = get_min(buf[!row][j - 1], buf[!row][j], buf[row][j - 1]);
 		}
+		/*
+		for (int k = 0; k < map->x; k++)
+			printf("%d ", buf[row][k]);
+		printf("\n");
+		*/
 		get_max(buf, i, max, map);
 	}
+	free(buf[0]);
+	free(buf[1]);
+	free(buf);
+	return ;
 }
 
 int	**get_buf(t_map *map, int *arr)
 {
 	int	**buf;
 	int	i;
+	int	j;
 
 	buf = malloc(sizeof (int *) * 2);
 	if (buf == NULL)
@@ -67,9 +81,9 @@ int	**get_buf(t_map *map, int *arr)
 			exit(EXIT_FAILURE);
 		}
 	}
-	i = -1;
-	while (++i < map->x)
-		buf[0][i] = arr[(int) map->map[0][i]];
+	j = -1;
+	while (++j < map->x)
+		buf[0][j] = arr[(int) map->map[0][j]];
 	return (buf);
 }
 

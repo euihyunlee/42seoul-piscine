@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:16:03 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/14 17:40:10 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/15 02:57:02 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,8 @@ void	find_square(t_map *map, t_max *max);
 int	**get_buf(t_map *map, int *arr);
 int	get_min(int i, int j, int k);
 void	get_max(int **buf, int i, t_max *max, t_map *map);
+
+void	x_marks_the_spot(t_map map, t_max max);
+void	print_square(t_map map);
 
 #endif
