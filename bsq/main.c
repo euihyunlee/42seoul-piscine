@@ -6,7 +6,7 @@
 /*   By: euihlee <euihlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:05:42 by euihlee           #+#    #+#             */
-/*   Updated: 2022/09/15 03:27:07 by euihlee          ###   ########.fr       */
+/*   Updated: 2022/09/15 06:57:02 by euihlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	main(int argc, char **argv)
 		i--;
 	while (++i < argc)
 	{
+		if (i > 1)
+			write(1, "\n", 1);
 		if (argc > 1)
 			file = argv[i];
 		if (!survey(file, &map))
